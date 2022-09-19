@@ -1,0 +1,192 @@
+:root {
+  /* colors */
+  --clr-primary100: hsl(0, 78%, 62%);
+  --clr-primary300: hsl(180, 62%, 55%);
+  --clr-primary500: hsl(34, 97%, 64%);
+  --clr-primary700: hsl(212, 86%, 64%);
+  --clr-neutral100: hsl(0, 0%, 100%);
+  --clr-neutral200: hsl(0, 0%, 98%);
+  --clr-neutral300: hsl(229, 6%, 66%);
+  --clr-neutral700: hsl(234, 12%, 34%);
+
+  /* fonts */
+  --ff-primary: "Poppins", sans-serif;
+  --fweight-xlight: 200;
+  --fweight-regular: 400;
+  --fweight-semibold: 600;
+  --fsize-500: 0.938rem;
+}
+
+/* resets */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: var(--ff-primary);
+  background-color: var(--clr-neutral200);
+}
+
+header {
+  grid-area: header;
+  text-align: center;
+  max-width: 58ch;
+  place-self: center;
+  padding-block-start: 3rem;
+  padding-block-end: 1.5rem;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  color: var(--clr-neutral700);
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+}
+
+h1 > span:first-child {
+  font-weight: var(--fweight-xlight);
+}
+
+h1,
+h2 {
+  font-weight: var(--fweight-semibold);
+  color: var(--clr-neutral700);
+}
+
+h2 {
+  margin-bottom: 0.4rem;
+}
+
+p {
+  font-size: var(--fsize-500);
+  color: var(--clr-neutral300);
+}
+
+.wrapper {
+  width: min(90%, 90rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "header header header"
+    "supervisor team calculator"
+    "supervisor karma calculator";
+  gap: 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "header"
+      "supervisor"
+      "team"
+      "karma"
+      "calculator";
+  }
+}
+
+.card {
+  background-color: var(--clr-neutral100);
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgb(207, 207, 207);
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  box-shadow: 0 4px 8px var(--clr-neutral300);
+}
+.card p {
+  max-width: 35ch;
+}
+
+/* Supervisor card 1 */
+.card:nth-of-type(1) {
+  grid-area: supervisor;
+  align-self: center;
+  border-top: 5px solid var(--clr-primary300);
+}
+.card:nth-of-type(1)::after {
+  content: url(images/icon-supervisor.svg);
+}
+/* Team Builder card 2 */
+.card:nth-of-type(2) {
+  grid-area: team;
+  border-top: 5px solid var(--clr-primary100);
+}
+.card:nth-of-type(2)::after {
+  content: url(images/icon-team-builder.svg);
+}
+/* Karma card 3 */
+.card:nth-of-type(3) {
+  grid-area: karma;
+  border-top: 5px solid var(--clr-primary500);
+}
+.card:nth-of-type(3)::after {
+  content: url(images/icon-karma.svg);
+}
+/* Calculator card 4 */
+.card:nth-of-type(4) {
+  grid-area: calculator;
+  align-self: center;
+  border-top: 5px solid var(--clr-primary700);
+}
+.card:nth-of-type(4)::after {
+  content: url(images/icon-calculator.svg);
+}
+*.card::after {
+  display: inline-block;
+  margin-block-start: 3rem;
+  margin-left: auto;
+}
+
+/* footer */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
